@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "../01-base/variables" as *;
-@use "../01-base/colors" as *;
 @use "../05-utils/mixins" as *;
 
 .nav {
@@ -119,6 +116,7 @@
     @include min-width(medium) {
       font-size: 16px;
     }
+
     &:hover {
       color: var(--nav-link-hover);
       filter: drop-shadow(0 0 15px var(--nav-link-hover));
