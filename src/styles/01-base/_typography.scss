@@ -1,0 +1,130 @@
+@use "sass:color";
+@use "./variables" as *;
+// @use "./colors" as *;
+// @use "../05-utils/mixins" as *;
+
+/* 
+====================================================
+I've used the following tool for the responsive
+fonts.
+====================================================
+*/
+
+// https://www.fluid-type-scale.com/
+
+/* 
+====================================================
+Mapping font sizes
+====================================================
+*/
+
+$fluid-font-sizes: (
+  "xs": clamp(0.64rem, -0.01vi + 0.64rem, 0.63rem),
+  "sm": clamp(0.9rem, 0.08vi + 0.8rem, 0.95rem),
+  "base": clamp(1rem, 0.22vi + 0.94rem, 1.13rem),
+  "md": clamp(1.25rem, 0.45vi + 1.14rem, 1.5rem),
+  "lg": clamp(1.56rem, 0.78vi + 1.37rem, 2rem),
+  "xl": clamp(1.95rem, 1.28vi + 1.63rem, 2.66rem),
+  "xxl": clamp(2.44rem, 2vi + 1.94rem, 3.55rem),
+  "xxxl": clamp(3.05rem, 3.03vi + 2.3rem, 4.73rem),
+);
+
+$static-font-sizes-min: (
+  "xs": 0.64rem,
+  "sm": 0.9rem,
+  "base": 1rem,
+  "md": 1.25rem,
+  "lg": 1.56rem,
+  "xl": 1.95rem,
+  "xxl": 2.44rem,
+  "xxxl": 3.05rem,
+);
+
+$static-font-sizes-max: (
+  "xs": 0.63rem,
+  "sm": 0.95rem,
+  "base": 1.13rem,
+  "md": 1.5rem,
+  "lg": 2rem,
+  "xl": 2.66rem,
+  "xxl": 3.55rem,
+  "xxxl": 4.73rem,
+);
+
+/* 
+====================================================
+For browsers that don't support clamp
+====================================================
+*/
+
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+  :root {
+    @each $key, $value in $fluid-font-sizes {
+      --type-#{$key}: #{$value};
+    }
+  }
+}
+
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+  :root {
+    @each $key, $value in $static-font-sizes-min {
+      --type-#{$key}: #{$value};
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-xl) {
+    :root {
+      @each $key, $value in $static-font-sizes-max {
+        --type-#{$key}: #{$value};
+      }
+    }
+  }
+}
+
+/* 
+====================================================
+Applying them to the map of headings
+====================================================
+*/
+
+$heading-styles: (
+  h1: var(--type-xxxl),
+  h2: var(--type-xxl),
+  h3: var(--type-xl),
+  h4: var(--type-lg),
+  h5: var(--type-md),
+  h6: var(--type-base),
+);
+
+/* 
+====================================================
+Applying the styles (sizes) to the headings. 
+====================================================
+*/
+
+@each $heading, $size in $heading-styles {
+  #{$heading} {
+    font-size: #{$size};
+    line-height: var(--font-heading-line-height);
+    font-family: var(--ff-heading), Arial, Helvetica, sans-serif;
+    color: var(--font-clr-heading-primary);
+  }
+}
+
+/* 
+====================================================
+Applying the default styles to body. 
+====================================================
+*/
+
+body {
+  font-family: var(--ff-body), Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: var(--type-base);
+  color: var(--font-clr-body-primary);
+}
+
+p {
+  // color: var(--text-body);
+  line-height: var(--font-body-line-height);
+}

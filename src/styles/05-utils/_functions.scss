@@ -1,0 +1,8 @@
+@use "sass:math";
+
+// good to keep in mind:
+// https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/
+
+@function rem($px) {
+  @return math.div(strip-unit($px), 16px) * 1rem;
+}

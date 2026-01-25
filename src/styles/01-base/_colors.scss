@@ -1,0 +1,38 @@
+$clr-night: hsl(0, 0%, 7%);
+$clr-platinum: hsl(0, 0%, 91%);
+$clr-vista-blue: hsl(232, 100%, 71%);
+$clr-palatinate-blue: hsl(230, 86%, 48%);
+$clr-ochre: hsl(29, 92%, 50%);
+
+$color-palette: (
+  "primary": $clr-palatinate-blue,
+  "secondary": $clr-vista-blue,
+  "accent": $clr-ochre,
+  "neutral-dark": $clr-night,
+  "neutral-light": $clr-platinum,
+);
+
+$variants: (
+  50: 90%,
+  100: 75%,
+  200: 50%,
+  300: 30%,
+  400: 15%,
+  500: 0%,
+);
+
+:root {
+  @each $name, $color in $color-palette {
+    @each $stop, $weight in $variants {
+      $final-color: null;
+
+      @if lightness($color) > 80% {
+        $final-color: mix(black, $color, $weight);
+      } @else {
+        $final-color: mix(white, $color, $weight);
+      }
+
+      --clr-#{$name}-#{$stop}: #{$final-color};
+    }
+  }
+}
