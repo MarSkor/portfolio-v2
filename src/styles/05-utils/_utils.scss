@@ -1,5 +1,57 @@
 @use "./mixins" as *;
 
+/*
+  ==========================================
+  flex
+  ==========================================
+  */
+
 .flex-center {
   @include use-flex(column, center, center);
+}
+
+/*
+  ==========================================
+  containers
+  ==========================================
+  */
+
+.container {
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.container-sm {
+  max-width: var(--breakpoint-sm);
+}
+
+.container-md {
+  max-width: var(--breakpoint-md);
+}
+
+.container-lg {
+  max-width: var(--breakpoint-lg);
+}
+
+.container-xl {
+  max-width: var(--breakpoint-xl);
+}
+
+.container-page {
+  margin-top: 40px;
+
+  @include min-width(medium) {
+    margin-top: 80px;
+  }
+}
+
+/*
+  ==========================================
+  text
+  ==========================================
+  */
+
+.capitalize {
+  text-transform: capitalize;
 }

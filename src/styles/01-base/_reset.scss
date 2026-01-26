@@ -26,11 +26,13 @@ html,
 body {
   max-width: 100%;
   overflow-x: clip;
+  min-height: 100dvh;
+  position: relative;
 }
 
 body {
-  min-height: 100vh;
-  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 body {
@@ -228,4 +230,10 @@ a:not([class]) {
 
 :target {
   scroll-margin-block: 5ex;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }

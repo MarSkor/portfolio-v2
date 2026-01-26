@@ -5,3 +5,15 @@ html {
 body {
   background-color: var(--clr-bg);
 }
+
+.page-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--font-clr-heading-primary);
+
+  &__slash {
+    color: var(--clr-accent);
+    font-weight: 500;
+  }
+}

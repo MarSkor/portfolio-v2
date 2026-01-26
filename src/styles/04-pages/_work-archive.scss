@@ -1,0 +1,61 @@
+@use "../05-utils/mixins" as *;
+
+.archive {
+  &__filters-wrapper {
+    @include use-flex(row, center, center);
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+    @include min-width(medium) {
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+  }
+  &__filter-list {
+    @include use-flex(row, center, center);
+
+    padding: 4px 8px;
+    width: fit-content;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    @include min-width(medium) {
+      gap: 16px;
+    }
+  }
+  &__filter-label {
+    color: var(--clr-text-muted);
+    text-transform: lowercase;
+    user-select: none;
+    font-size: var(--type-sm);
+    font-family: var(--ff-mono);
+
+    & .slash {
+      color: var(--clr-slash);
+    }
+  }
+  &__filter-btn {
+    @include button-reset;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid transparent;
+
+    transition:
+      color var(--ts-snappy-3),
+      background-color var(--ts-snappy-3),
+      border-color var(--ts-snappy-3),
+      transform var(--ts-snappy-3);
+
+    &:hover {
+      color: var(--clr-filter-action);
+      background-color: var(--clr-filter-soft);
+      border-color: var(--clr-filter-action);
+      transform: translateY(-1px);
+    }
+
+    &--active {
+      color: var(--clr-filter-text);
+      background-color: var(--clr-filter-action);
+      border-color: var(--clr-filter-link-action);
+    }
+  }
+}

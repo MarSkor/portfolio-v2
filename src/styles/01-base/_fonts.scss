@@ -29,3 +29,21 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "JetBrains_Mono";
+  font-weight: 300, 600;
+  src: url(/fonts/JetBrains_Mono/JetBrains_Mono-VariableFont_wght.ttf)
+    format("ttf");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains_Mono-Italic";
+  font-weight: 300, 600;
+  src: url(/fonts/JetBrains_Mono/JetBrains_Mono-Italic-VariableFont_wght.ttf)
+    format("ttf");
+  font-style: italic;
+  font-display: swap;
+}

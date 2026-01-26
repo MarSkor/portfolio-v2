@@ -12,8 +12,9 @@ sass
 
 $font-heading: "CabinetGrotesk", sans-serif;
 $font-body: "Switzer", sans-serif;
-$font-logo: "Damion";
-$font-line-height-h: 1.5;
+$font-logo: "Damion", script;
+$font-Mono: "JetBrains_Mono", monospace;
+$font-line-height-h: 1.35;
 $font-line-height-b: 1.5;
 
 $breakpoint-sm: 640px;
@@ -29,12 +30,13 @@ root variables
 :root {
   /*
   ==========================================
-  fonts
+  fonts + font colors
   ==========================================
   */
   --ff-heading: #{$font-heading};
   --ff-body: #{$font-body};
   --ff-logo: #{$font-logo};
+  --ff-mono: #{$font-Mono};
   //font-setting
   --font-heading-line-height: #{$font-line-height-h};
   --font-body-line-height: #{$font-line-height-b};
@@ -42,8 +44,9 @@ root variables
   --font-clr-heading-primary: var(--clr-neutral-light-500);
   --font-clr-heading-secondary: var(--clr-neutral-dark-500);
   --font-clr-body-primary: var(--clr-neutral-light-400);
+  --font-clr-body-primary-300: var(--clr-neutral-light-300);
   --font-clr-body-secondary: var(--clr-neutral-dark-400);
-
+  --clr-text-muted: color-mix(in srgb, var(--clr-neutral-dark-400), white 35%);
   /*
   ==========================================
   breakpoints
@@ -61,99 +64,99 @@ root variables
   */
 
   --clr-bg: var(--clr-neutral-dark-500);
+  --clr-tag-bg: var(--clr-neutral-dark-500);
+  --card-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 1.5%);
   --clr-icon: var(--clr-neutral-light-500);
-
   --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 2%);
   --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 25%);
-  --clr-theme-toggle-hover: color-mix(
-    in srgb,
-    var(--clr-secondary-500),
-    transparent
-  );
+  --clr-theme-toggle-hover: color-mix(in srgb, var(--clr-secondary-500));
   --nav-border: var(--clr-neutral-dark-400);
   --nav-link: var(--clr-neutral-light-500);
   --nav-link-hover: var(--clr-primary-200);
-  /*
-  ==========================================
-  base components
-  ==========================================
-  */
-  --clr-neutral-light-h: 0;
-  --clr-neutral-light-s: 0%;
-  --clr-neutral-light-l: 91%;
-
-  // --nav-bg-scroll: hsla(
-  //   var(--clr-neutral-light-h),
-  //   var(--clr-neutral-light-s),
-  //   calc(var(--clr-neutral-light-l) - 5%),
-  //   0.8
-  // );
-
-  // --nav-menu-bg: hsl(
-  //   var(--clr-neutral-light-h),
-  //   var(--clr-neutral-light-s),
-  //   calc(var(--clr-neutral-light-l) - 5%)
-  // );
+  --footer-link: var(--clr-neutral-light-400);
+  --footer-link-hover: var(--clr-primary-200);
+  --clr-accent: var(--clr-accent-500);
+  --clr-filter-action: var(--clr-primary-200);
+  --clr-filter-text: var(--clr-neutral-dark-500);
+  --clr-filter-soft: color-mix(
+    in srgb,
+    var(--clr-filter-action),
+    transparent 95%
+  );
+  --clr-slash: color-mix(in srgb, var(--clr-neutral-light-400), black 20%);
 
   /*
   ==========================================
   shadow
   ==========================================
   */
+  --box-shadow-inset: inset 3px 3px 7px #202020, inset -3px -3px 7px #161616;
   //useful tool from https://www.joshwcomeau.com/shadow-palette/
-  // --shadow-color: 0deg 0% 26%;
-  // --shadow-color: hsla(0, 0%, 51%, 0.357);
-  // --shadow-elevation-low:
-  //   0px 0.4px 0.5px hsl(var(--shadow-color) / 0.28),
-  //   0px 0.7px 0.8px -1px hsl(var(--shadow-color) / 0.32),
-  //   0px 1.6px 1.9px -2px hsl(var(--shadow-color) / 0.37);
-  // --shadow-elevation-medium:
-  //   0px 0.4px 0.5px hsl(var(--shadow-color) / 0.29),
-  //   0px 1.4px 1.7px -0.7px hsl(var(--shadow-color) / 0.32),
-  //   0px 3.4px 4.1px -1.3px hsl(var(--shadow-color) / 0.36),
-  //   0px 8px 9.6px -2px hsl(var(--shadow-color) / 0.4);
-  // --shadow-elevation-high:
-  //   0px 0.4px 0.5px hsl(var(--shadow-color) / 0.27),
-  //   0px 2.7px 3.2px -0.3px hsl(var(--shadow-color) / 0.28),
-  //   0px 5px 6px -0.6px hsl(var(--shadow-color) / 0.3),
-  //   0px 7.9px 9.5px -0.9px hsl(var(--shadow-color) / 0.32),
-  //   0px 12.2px 14.6px -1.1px hsl(var(--shadow-color) / 0.34),
-  //   0px 18.5px 22.2px -1.4px hsl(var(--shadow-color) / 0.35),
-  //   0.1px 27.6px 33.1px -1.7px hsl(var(--shadow-color) / 0.37),
-  //   0.1px 40.1px 48.1px -2px hsl(var(--shadow-color) / 0.39);
+  --shadow-color: 220deg 20% 2%;
+  --shadow-strength: 0.8;
+
+  --shadow-elevation-low:
+    0px 0.1px 0.1px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.45)),
+    0px 0.2px 0.2px -1.2px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.45)),
+    0px 0.5px 0.6px -2.5px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.45));
+
+  --shadow-elevation-medium:
+    0px 0.1px 0.1px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.35)),
+    0px 0.4px 0.5px -0.8px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.35)),
+    0px 1.1px 1.2px -1.7px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.35)),
+    0px 2.7px 3px -2.5px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.35));
+
+  --shadow-elevation-high:
+    0px 0.1px 0.1px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.2)),
+    0px 0.9px 1px -0.4px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.18)),
+    0px 1.8px 2px -0.8px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.16)),
+    0px 3.1px 3.5px -1.2px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.14)),
+    0px 5.3px 6px -1.7px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.12)),
+    0.1px 8.6px 9.7px -2.1px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.1)),
+    0.1px 13.6px 15.3px -2.5px
+      hsl(var(--shadow-color) / calc(var(--shadow-strength) * 0.08));
 
   /*
   ==========================================
   speed for ui interactions
   ==========================================
   */
-  /* fast */
+
   --ts-ease-1: 0.1s ease;
   --ts-ease-2: 0.2s ease;
   --ts-ease-in-2: 0.2s ease-in;
   --ts-linear-2: 0.2s linear;
 
-  /* medium */
   --ts-ease-3: 0.3s ease;
   --ts-ease-out-3: 0.3s ease-out;
   --ts-ease-in-3: 0.3s ease-in;
   --ts-linear-3: 0.3s linear;
 
-  /* smooth/slow */
   --ts-ease-4: 0.4s ease;
   --ts-ease-in-out-4: 0.4s ease-in-out;
   --ts-ease-5: 0.5s ease;
   --ts-ease-in-out-5: 0.5s ease-in-out;
 
-  /* starts fast, finishes very smoothly */
+  --ts-spring-3: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ts-snappy-3: 0.3s cubic-bezier(0.2, 1, 0.3, 1);
   --ts-snappy-4: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   --ts-snappy-5: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 
-  /* for attention-grabbing elements */
   --ts-emphasize-4: 0.4s cubic-bezier(0.5, 0, 0, 1);
 
-  /* very gradual acceleration and deceleration */
   --ts-soft-4: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   // resetting states
@@ -165,40 +168,11 @@ root variables
 
   /*
   ==========================================
-  default (dark) theme
+  various
   ==========================================
   */
-
-  // --background: var(--clr-primary);
-  // --background-2: hsl(from var(--clr-primary) h s calc(l + 20));
-  // --background-3: var(--clr-secondary);
-  // --background-4: hsl(from var(--clr-primary) h s calc(l + 12));
-  // --foreground: var(--clr-secondary);
-
-  // --border: hsl(from var(--clr-primary) h s calc(l + 55));
-
-  // --accent: var(--clr-vista-blue);
-  // --accent2: hsl(from var(--clr-ochre) h calc(s + 100) l);
-  // --accent-info-card: hsl(from var(--clr-accent-dark) h s calc(l + 5));
-  // --accent-card-link: var(--clr-accent-light);
-  // --link-nav: var(--clr-accent-light);
-  // --link: hsl(from var(--clr-accent-light) h s calc(l + 5));
-  // --link-dark: hsl(from var(--clr-accent-light) h calc(s - 80) calc(l + 5));
-
-  // --clr-primary-body-text: var(--clr-secondary);
-  // --clr-primary-heading: var(--clr-secondary);
-  // --text-light: var(--clr-secondary);
-  // --text-heading: hsl(from var(--clr-primary-heading) h s calc(l + 10));
-  // --text-body: hsl(from var(--clr-primary-body-text) h s calc(l - 10));
-  // --text-slug: hsl(from var(--clr-secondary) h s calc(l + 30));
-
-  // --theme-toggle: var(--clr-secondary);
-  // --tag-text: hsl(from var(--clr-secondary) h s calc(l + 10));
-  // --tag-background: hsl(from var(--clr-primary) h s calc(l + 10));
-  // --card-bg: hsl(from var(--clr-primary) h s calc(l + 2));
-
-  // --box-shadow-inset-background: hsl(0, 0%, 9%);
-  // --box-shadow-inset: inset 3px 3px 7px #202020, inset -3px -3px 7px #161616;
+  --border-radius-xs: 0.25rem;
+  --border-radius-sm: 0.5rem;
 }
 
 /*
@@ -210,52 +184,37 @@ root variables
 [data-theme="light"] {
   color-scheme: light;
 
+  /*
+  ==========================================
+  colors
+  ==========================================
+  */
   --font-clr-heading-primary: var(--clr-neutral-dark-500);
   --font-clr-heading-secondary: var(--clr-neutral-dark-500);
   --font-clr-body-primary: var(--clr-neutral-dark-400);
+  --font-clr-body-primary-300: var(--clr-neutral-dark-300);
   --font-clr-body-secondary: var(--clr-neutral-light-400);
-
   --clr-bg: var(--clr-neutral-light-500);
-
+  --clr-tag-bg: var(--clr-neutral-light-500);
   --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-light-400), white 40%);
   --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 20%);
   --nav-link: var(--clr-neutral-dark-500);
   --nav-link-hover: var(--clr-primary-400);
-
+  --footer-link: var(--clr-neutral-dark-500);
+  --footer-link-hover: var(--clr-primary-400);
   --clr-icon: var(--clr-neutral-dark-500);
+  --clr-filter-action: var(--clr-primary-500);
+  --clr-filter-text: var(--clr-neutral-light-500);
+  --clr-text-muted: color-mix(in srgb, var(--clr-neutral-light-400), black 35%);
+  --clr-slash: color-mix(in srgb, var(--clr-neutral-dark-400), white 25%);
 
-  //   --clr-primary-body-text: var(--clr-primary);
-  //   --clr-primary-heading: var(--clr-primary);
-
-  //   --background: var(--clr-secondary);
-  //   --background-2: hsl(from var(--clr-secondary) h s calc(l + 80));
-  //   --background-3: var(--clr-primary);
-  //   --background-4: hsl(from var(--clr-secondary) h s calc(l - 10));
-  //   --foreground: var(--clr-primary);
-
-  //   --border: hsl(from var(--clr-primary) h s calc(l + 12));
-
-  //   --accent-card-link: hsl(from var(--clr-accent-dark) h s calc(l + 10));
-  //   --accent-info-card: hsl(from var(--clr-accent-dark) h s calc(l + 5));
-  //   --link-nav: var(--clr-accent-dark);
-  //   --link: hsl(from var(--accent) h s calc(l - 15));
-  //   --link-dark: hsl(from var(--clr-accent-light) h calc(s - 80) calc(l - 25));
-
-  //   --text-heading: hsl(from var(--clr-primary-heading) h s l);
-  //   --text-body: hsl(from var(--clr-primary-body-text) h s calc(l - 15));
-  //   --text-slug: hsl(from var(--clr-secondary) h s calc(l + 30));
-
-  //   --theme-toggle: var(--clr-primary);
-  //   --tag-text: hsl(from var(--clr-primary) h s calc(l + 15));
-  //   --tag-background: hsl(from var(--clr-secondary) h s calc(l - 2));
-  //   --card-bg: hsl(from var(--clr-secondary) h s calc(l - 2));
-
-  //   --shadow-color: hsl(0deg 0% 66%);
-
-  //   --box-shadow-inset-background: hsl(
-  //     from var(--clr-secondary) h s calc(l + 100)
-  //   );
-
-  //   // --box-shadow-inset: inset 3px 3px 7px #dfdfdf, inset -3px -3px 7px #dddddd;
-  //   --box-shadow-inset: inset 3px 3px 7px #eeeeee, inset -3px -3px 7px #cecece;
+  /*
+  ==========================================
+  shadows
+  ==========================================
+  */
+  --shadow-color: 0deg 0% 0%;
+  --shadow-strength: 0.2;
+  --card-bg: color-mix(in srgb, var(--clr-neutral-light-500), black 3.5%);
+  --box-shadow-inset: inset 3px 3px 7px #eeeeee, inset -3px -3px 7px #cecece;
 }
