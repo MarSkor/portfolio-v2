@@ -50,14 +50,16 @@
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
-    border-radius: 0.25rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--clr-image-bg-placeholder);
 
-    img {
-      width: 100%;
-      height: 100%;
+    &__img {
       object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
     }
   }
+
   &__content {
     &--heading {
       margin: 16px 0 4px;

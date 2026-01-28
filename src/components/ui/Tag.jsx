@@ -1,8 +1,10 @@
-const Tag = ({ children, ...props }) => {
+const Tag = ({ text, className }) => {
   return (
-    <span className="tag__wrapper">
-      <p className="tag__text">{props.text}</p>
-    </span>
+    <li role="listitem" className={`tag__wrapper ${className}`}>
+      <p className="tag__text" style={{ color: "inherit" }}>
+        {text}
+      </p>
+    </li>
   );
 };
 

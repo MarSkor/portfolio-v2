@@ -62,6 +62,7 @@ export const project = defineType({
       type: "array",
       of: [{ type: "string" }],
       options: { layout: "tags" },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "role",
@@ -84,8 +85,23 @@ export const project = defineType({
     defineField({
       name: "liveUrl",
       title: "Live Demo URL",
-      type: "url",
+      type: "object",
       icon: LinkIcon,
+      fields: [
+        defineField({
+          name: "url",
+          title: "URL",
+          type: "url",
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: "label",
+          title: "Label",
+          type: "string",
+          initialValue: "Live Demo",
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: "date",
@@ -124,10 +140,64 @@ export const project = defineType({
       title: "Detailed Project Description.",
       type: "array",
       of: [
-        { type: "block" },
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [
+            { title: "Bullet", value: "bullet" },
+            { title: "Numbered", value: "number" },
+          ],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+              { title: "Code", value: "code" },
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "url",
+                    title: "URL",
+                  },
+                ],
+              },
+            ],
+          },
+        },
         {
           type: "image",
-          fields: [{ name: "alt", type: "string", title: "Alt text" }],
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative Text",
+              description: "Important for SEO and accessibility",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "caption",
+              type: "string",
+              title: "Caption",
+              description: "Displayed below the image",
+            },
+          ],
+        },
+        {
+          type: "code",
+          options: {
+            withFilename: true,
+          },
         },
       ],
     }),
@@ -136,6 +206,7 @@ export const project = defineType({
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "featured",

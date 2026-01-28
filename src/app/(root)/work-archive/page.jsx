@@ -14,12 +14,10 @@ const WorkArchivePage = async ({ searchParams }) => {
     client.fetch(ALL_PROJECTS, { category }),
   ]);
 
-  console.log("categories", categories);
-
   return (
     <section className="container container-xl container-page">
       <header className="archive__header flex-center">
-        <PageHeading text={"Work Archive"} />
+        <PageHeading text={"Work Archive"} size="h1" />
       </header>
       <WorkArchiveOverview
         categories={categories}

@@ -7,7 +7,7 @@ const Card = ({ project }) => {
   const { slug, title, coverImage, techStack } = project;
 
   const projectImageUrl = coverImage
-    ? urlFor(coverImage)?.width(550).height(310).url()
+    ? urlFor(coverImage).auto("format").url()
     : null;
 
   return (
@@ -19,6 +19,7 @@ const Card = ({ project }) => {
               <Link
                 href={`/work-archive/${slug.current}`}
                 className="card__link card__view-more capitalize"
+                prefetch={false}
               >
                 {title}
               </Link>
@@ -30,18 +31,18 @@ const Card = ({ project }) => {
             ))}
           </div>
         </div>
-        <div className="card__image-wrapper">
+        <figure className="card__image-wrapper">
           {projectImageUrl && (
             <Image
-              fill={true}
               src={projectImageUrl}
-              alt={title}
-              style={{
-                objectFit: "cover",
-              }}
+              alt={`Cover image for ${title}`}
+              fill
+              priority
+              className="card__image"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
             />
           )}
-        </div>
+        </figure>
       </article>
     </li>
   );

@@ -1,18 +1,32 @@
 .page-link {
   text-decoration: none;
   color: var(--font-clr-body-primary);
-  font-weight: 500;
+  font-weight: 400;
   transition: color var(--ts-ease-2);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-size: var(--type-sm);
 
   &:hover {
     color: var(--nav-link-hover);
+    // color: var(--clr-accent);
 
     svg {
       transform: translateX(4px);
       transition: transform var(--ts-spring-3);
     }
   }
+}
+
+.animate-up-right {
+  gap: 4px;
+
+  &:hover .link-icon-svg {
+    transform: translate(4px, -4px);
+  }
+}
+
+.meta-link:hover {
+  color: var(--clr-accent);
 }

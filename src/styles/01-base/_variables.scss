@@ -46,7 +46,19 @@ root variables
   --font-clr-body-primary: var(--clr-neutral-light-400);
   --font-clr-body-primary-300: var(--clr-neutral-light-300);
   --font-clr-body-secondary: var(--clr-neutral-dark-400);
+  --font-clr-dark: var(--clr-neutral-dark-500);
+  --font-clr-body-light: color-mix(
+    in srgb,
+    var(--clr-neutral-light-400),
+    white 50%
+  );
+
   --clr-text-muted: color-mix(in srgb, var(--clr-neutral-dark-400), white 35%);
+  --clr-text-muted-light: color-mix(
+    in srgb,
+    var(--clr-neutral-dark-400),
+    white 45%
+  );
   /*
   ==========================================
   breakpoints
@@ -65,10 +77,13 @@ root variables
 
   --clr-bg: var(--clr-neutral-dark-500);
   --clr-tag-bg: var(--clr-neutral-dark-500);
+  --clr-tag-bg-dark: var(--clr-neutral-dark-500);
+  --clr-tag-text-light: var(--clr-neutral-light-500);
   --card-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 1.5%);
+  --card-bg-dark: color-mix(in srgb, var(--clr-neutral-dark-500), black 1.5%);
   --clr-icon: var(--clr-neutral-light-500);
-  --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 2%);
-  --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 25%);
+  --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 1%);
+  --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 5%);
   --clr-theme-toggle-hover: color-mix(in srgb, var(--clr-secondary-500));
   --nav-border: var(--clr-neutral-dark-400);
   --nav-link: var(--clr-neutral-light-500);
@@ -84,7 +99,19 @@ root variables
     transparent 95%
   );
   --clr-slash: color-mix(in srgb, var(--clr-neutral-light-400), black 20%);
-
+  --clr-image-bg-placeholder: var(--clr-neutral-dark-400);
+  --clr-border: var(--clr-neutral-dark-300);
+  --clr-border-primary: color-mix(
+    in srgb,
+    var(--clr-neutral-light-300),
+    black 70%
+  );
+  --clr-slug-details-bg: color-mix(in srgb, var(--clr-primary-500), black 15%);
+  --clr-code-filename-bg: color-mix(
+    in srgb,
+    var(--clr-neutral-dark-500),
+    black 15%
+  );
   /*
   ==========================================
   shadow
@@ -173,6 +200,8 @@ root variables
   */
   --border-radius-xs: 0.25rem;
   --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
+  --border-radius-lg: 2rem;
 }
 
 /*
@@ -194,10 +223,11 @@ root variables
   --font-clr-body-primary: var(--clr-neutral-dark-400);
   --font-clr-body-primary-300: var(--clr-neutral-dark-300);
   --font-clr-body-secondary: var(--clr-neutral-light-400);
+  --font-clr-body-light: var(--clr-neutral-light-500);
   --clr-bg: var(--clr-neutral-light-500);
   --clr-tag-bg: var(--clr-neutral-light-500);
-  --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-light-400), white 40%);
-  --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 20%);
+  --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-light-400), white 45%);
+  --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 10%);
   --nav-link: var(--clr-neutral-dark-500);
   --nav-link-hover: var(--clr-primary-400);
   --footer-link: var(--clr-neutral-dark-500);
@@ -207,7 +237,18 @@ root variables
   --clr-filter-text: var(--clr-neutral-light-500);
   --clr-text-muted: color-mix(in srgb, var(--clr-neutral-light-400), black 35%);
   --clr-slash: color-mix(in srgb, var(--clr-neutral-dark-400), white 25%);
-
+  --clr-image-bg-placeholder: var(--clr-neutral-light-400);
+  --clr-code-filename-bg: color-mix(
+    in srgb,
+    var(--clr-neutral-light-500),
+    black 15%
+  );
+  --clr-border-primary: color-mix(
+    in srgb,
+    var(--clr-neutral-dark-300),
+    white 55%
+  );
+  --card-bg: color-mix(in srgb, var(--clr-neutral-light-500), black 3.5%);
   /*
   ==========================================
   shadows
@@ -215,6 +256,5 @@ root variables
   */
   --shadow-color: 0deg 0% 0%;
   --shadow-strength: 0.2;
-  --card-bg: color-mix(in srgb, var(--clr-neutral-light-500), black 3.5%);
   --box-shadow-inset: inset 3px 3px 7px #eeeeee, inset -3px -3px 7px #cecece;
 }
