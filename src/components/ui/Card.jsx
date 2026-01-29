@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Tag from "./Tag";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowRight01Icon } from "@hugeicons/core-free-icons/index";
 
 const Card = ({ project }) => {
   const { slug, title, coverImage, techStack } = project;
@@ -13,24 +15,33 @@ const Card = ({ project }) => {
   return (
     <li role="list" className="card" tabIndex={0}>
       <article className="card__inner">
-        <div className="card__content">
-          <div className="card__content--heading">
-            <h5 className="card__content--title">
-              <Link
-                href={`/work-archive/${slug.current}`}
-                className="card__link card__view-more capitalize"
-                prefetch={false}
-              >
-                {title}
-              </Link>
-            </h5>
-          </div>
+        <header className="card__header">
+          <h3 className="card__header--title">{title}</h3>
+        </header>
+
+        <div className="card__meta-row">
           <div className="card__content--tag-list">
-            {techStack.slice(0, 5).map((tag, i) => (
+            {techStack.slice(0, 4).map((tag, i) => (
               <Tag key={tag} text={tag} />
             ))}
           </div>
+          <footer className="card__footer">
+            <Link
+              href={`/work-archive/${slug.current}`}
+              className="card__view-more"
+            >
+              <span className="card__view-text">View Project</span>
+              <div className="card__arrow-circle">
+                <HugeiconsIcon
+                  icon={ArrowRight01Icon}
+                  size={20}
+                  className="card__arrow"
+                />
+              </div>
+            </Link>
+          </footer>
         </div>
+
         <figure className="card__image-wrapper">
           {projectImageUrl && (
             <Image
