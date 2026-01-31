@@ -86,12 +86,12 @@ Applying them to the map of headings
 */
 
 $heading-styles: (
-  h1: var(--type-xxxl),
-  h2: var(--type-xxl),
-  h3: var(--type-xl),
-  h4: var(--type-lg),
-  h5: var(--type-md),
-  h6: var(--type-base),
+  h1: var(--type-xxl),
+  h2: var(--type-xl),
+  h3: var(--type-lg),
+  h4: var(--type-md),
+  h5: var(--type-base),
+  h6: var(--type-sm),
 );
 
 /* 
@@ -123,6 +123,9 @@ body {
 }
 
 p {
-  // color: var(--text-body);
   line-height: var(--font-body-line-height);
+}
+
+.hero__title {
+  font-size: var(--type-xxxl);
 }

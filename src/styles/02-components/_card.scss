@@ -43,7 +43,7 @@ setting
 
     .card__arrow-circle {
       background-color: var(--clr-primary-global);
-      color: var(--clr-neutral-dark-500);
+      color: var(--clr-icon-card-hover);
     }
 
     .card__view-text {
@@ -183,8 +183,12 @@ footer
       transparent 90%
     );
     border: 1px solid var(--clr-border-primary);
-    color: var(--clr-icon);
+    color: var(--clr-icon-card);
     transition: all var(--ts-spring-3);
+
+    &:hover {
+      color: var(--clr-icon-card-hover);
+    }
   }
 
   &__arrow {

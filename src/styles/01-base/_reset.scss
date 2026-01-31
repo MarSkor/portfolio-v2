@@ -33,9 +33,6 @@ body {
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
-}
-
-body {
   /* 4. Add accessible line-height */
   line-height: 1.5;
   /* 5. Improve text rendering */

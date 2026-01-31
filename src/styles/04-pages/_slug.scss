@@ -247,7 +247,11 @@ text
   }
 
   .slug__render-h2 {
-    margin-top: 4rem;
+    &:not(:first-child) {
+      margin-top: 4rem;
+    }
+  }
+  .slug__render-h2 {
     margin-bottom: 1.5rem;
   }
 
@@ -261,12 +265,14 @@ text
   }
 
   .slug__render-link {
-    color: var(--clr-accent);
+    color: var(--nav-link);
     text-decoration: underline;
     text-underline-offset: 4px;
+    font-weight: 500;
     transition: color var(--ts-ease-2);
     &:hover {
       color: var(--nav-link-hover);
+      filter: drop-shadow(0 0 15px var(--nav-link-hover));
     }
   }
 
@@ -279,7 +285,7 @@ text
     li {
       margin-bottom: 0.75rem;
       &::marker {
-        color: var(--clr-accent);
+        color: var(--clr-primary-400);
       }
     }
   }

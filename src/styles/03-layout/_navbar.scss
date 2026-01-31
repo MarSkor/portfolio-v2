@@ -8,7 +8,7 @@
   */
   &__wrapper {
     position: sticky;
-    z-index: 10;
+    z-index: 100;
     top: 0;
     background: transparent;
 
@@ -55,7 +55,7 @@
     width: 75%;
     min-height: calc(100svh - 0px);
     padding: 16px;
-    z-index: 11;
+    z-index: 101;
     position: fixed;
     top: 0;
     right: 0;
@@ -136,7 +136,7 @@
 
   &__logo-wrapper {
     position: relative;
-    z-index: 13;
+    z-index: 101;
     width: 60px;
   }
 
@@ -150,7 +150,7 @@
   }
 
   &__action-section {
-    z-index: 997;
+    z-index: 104;
     @include use-flex(row, flex-end, center);
     gap: 6px;
   }
@@ -164,15 +164,28 @@
   }
 }
 
+.theme-toggle__icon svg {
+  shape-rendering: geometricPrecision;
+}
+
 .theme-toggle__icon,
 .nav__menu-toggle {
   color: var(--clr-icon);
-  z-index: 998;
+  z-index: 105;
   -webkit-font-smoothing: antialiased;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
 
 .theme-toggle {
   &__btn {
+    isolation: isolate;
+    transform: translateZ(0);
+
     --size: 44px;
     @include button-reset;
     display: grid;
@@ -184,12 +197,14 @@
     background-color: inherit;
     overflow: hidden;
     border-radius: 50%;
-    transition: background-color var(--ts-ease-2);
+    transition: var(--ts-ease-2);
 
     &:hover {
-      background-color: var(--clr-theme-toggle-hover);
+      color: var(--nav-link-hover);
+      filter: drop-shadow(0 0 15px var(--nav-link-hover));
     }
   }
+
   &__icon {
     position: absolute;
     top: 50%;
@@ -202,9 +217,8 @@
     transition:
       transform var(--ts-snappy-5),
       opacity var(--ts-ease-3);
-
     opacity: 0;
-    transform: translate(-150%, 20%) rotate(-120deg) scale(0.5);
+    transform: translate(-100%, 20%) rotate(-120deg) scale(0.5) translateZ(0);
   }
 }
 [data-theme="light"] {
@@ -226,7 +240,7 @@
   }
   .theme-toggle__icon--light {
     opacity: 0;
-    transform: translate(-150%, 20%) rotate(-120deg) scale(0.5);
+    transform: translate(-100%, 20%) rotate(-120deg) scale(0.5);
   }
 }
 
