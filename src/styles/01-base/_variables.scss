@@ -52,7 +52,7 @@ root variables
     var(--clr-neutral-light-400),
     white 50%
   );
-
+  --clr-primary-global: var(--clr-primary-200);
   --clr-text-muted: color-mix(in srgb, var(--clr-neutral-dark-400), white 35%);
   --clr-text-muted-light: color-mix(
     in srgb,
@@ -80,11 +80,17 @@ root variables
   --clr-tag-bg-dark: var(--clr-neutral-dark-500);
   --clr-tag-text-light: var(--clr-neutral-light-500);
   --card-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 1.5%);
-  --card-bg-dark: color-mix(in srgb, var(--clr-neutral-dark-500), black 1.5%);
+  --card-bg-dark: color-mix(in srgb, var(--clr-neutral-dark-500), black 15%);
   --clr-icon: var(--clr-neutral-light-500);
+  --clr-icon-card: var(--clr-neutral-light-500);
+  --clr-icon-card-hover: var(--clr-neutral-dark-500);
   --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-dark-500), white 1%);
   --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 5%);
-  --clr-theme-toggle-hover: color-mix(in srgb, var(--clr-secondary-500));
+  --clr-theme-toggle-hover: color-mix(
+    in srgb,
+    var(--clr-secondary-500),
+    black 65%
+  );
   --nav-border: var(--clr-neutral-dark-400);
   --nav-link: var(--clr-neutral-light-500);
   --nav-link-hover: var(--clr-primary-200);
@@ -112,6 +118,28 @@ root variables
     var(--clr-neutral-dark-500),
     black 15%
   );
+
+  --clr-bento-card-one: var(--clr-neutral-dark-500);
+
+  --clr-bento-card-two: color-mix(
+    in srgb,
+    var(--clr-secondary-500),
+    transparent 99%
+  );
+  --clr-bento-card-three: color-mix(
+    in srgb,
+    var(--clr-accent-500),
+    transparent 99%
+  );
+  --clr-bento-card-four: color-mix(
+    in srgb,
+    var(--clr-neutral-light-500),
+    transparent 99%
+  );
+  --clr-btn-text: var(--clr-neutral-dark-500);
+  --clr-btn-hover: var(--clr-neutral-dark-500);
+  --clr-form-error: hsl(0, 89%, 63%);
+  --clr-form-success: hsl(152, 100%, 50%);
   /*
   ==========================================
   shadow
@@ -182,6 +210,8 @@ root variables
   --ts-snappy-4: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   --ts-snappy-5: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 
+  // all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+
   --ts-emphasize-4: 0.4s cubic-bezier(0.5, 0, 0, 1);
 
   --ts-soft-4: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -228,11 +258,18 @@ root variables
   --clr-tag-bg: var(--clr-neutral-light-500);
   --nav-menu-bg: color-mix(in srgb, var(--clr-neutral-light-400), white 45%);
   --nav-bg-scroll: color-mix(in srgb, var(--nav-menu-bg), transparent 10%);
+  --clr-theme-toggle-hover: color-mix(
+    in srgb,
+    var(--clr-secondary-500),
+    white 65%
+  );
   --nav-link: var(--clr-neutral-dark-500);
   --nav-link-hover: var(--clr-primary-400);
   --footer-link: var(--clr-neutral-dark-500);
   --footer-link-hover: var(--clr-primary-400);
   --clr-icon: var(--clr-neutral-dark-500);
+  --clr-icon-card: var(--clr-neutral-dark-500);
+  --clr-icon-card-hover: var(--clr-neutral-light-500);
   --clr-filter-action: var(--clr-primary-500);
   --clr-filter-text: var(--clr-neutral-light-500);
   --clr-text-muted: color-mix(in srgb, var(--clr-neutral-light-400), black 35%);
@@ -249,6 +286,28 @@ root variables
     white 55%
   );
   --card-bg: color-mix(in srgb, var(--clr-neutral-light-500), black 3.5%);
+  --clr-primary-global: var(--clr-primary-500);
+  --clr-bento-card-one: color-mix(
+    in srgb,
+    var(--clr-primary-500),
+    transparent 96%
+  );
+  --clr-bento-card-two: color-mix(
+    in srgb,
+    var(--clr-secondary-500),
+    transparent 96%
+  );
+  --clr-bento-card-three: color-mix(
+    in srgb,
+    var(--clr-accent-500),
+    transparent 96%
+  );
+  --clr-bento-card-four: var(--clr-neutral-light-50);
+
+  --clr-btn-text: var(--clr-neutral-light-500);
+  --clr-btn-hover: var(--clr-neutral-light-500);
+  --clr-form-error: hsl(0, 70%, 37%);
+  --clr-form-success: #06c16a;
   /*
   ==========================================
   shadows

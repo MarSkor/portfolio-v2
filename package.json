@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@hugeicons/core-free-icons": "^3.1.1",
     "@hugeicons/react": "^1.1.4",
     "@portabletext/react": "^6.0.2",
@@ -19,13 +20,16 @@
     "@uidotdev/usehooks": "^2.4.1",
     "@wooorm/starry-night": "^3.9.0",
     "hast-util-to-html": "^9.0.5",
+    "motion": "^12.29.2",
     "next": "^16.1.6",
     "next-sanity": "^12.0.14",
     "next-themes": "^0.4.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-hook-form": "^7.71.1",
     "sanity": "^5.7.0",
-    "styled-components": "^6.3.8"
+    "styled-components": "^6.3.8",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "babel-plugin-react-compiler": "1.0.0",

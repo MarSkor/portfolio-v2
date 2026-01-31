@@ -1,0 +1,19 @@
+import ContactForm from "@/components/pages/contact/ContactForm";
+import ContactInformation from "@/components/pages/contact/ContactInformation";
+import PageHeading from "@/components/ui/PageHeading";
+
+const ContactPage = () => {
+  return (
+    <section className="container container-xl container-page">
+      <header className="contact__header flex-center">
+        <PageHeading text={"Contact"} size="h1" />
+      </header>
+      <section className="contact__grid">
+        <ContactInformation />
+        <ContactForm />
+      </section>
+    </section>
+  );
+};
+
+export default ContactPage;
