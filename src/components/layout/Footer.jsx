@@ -7,6 +7,7 @@ import {
   Behance02Icon,
   Linkedin01Icon,
 } from "@hugeicons/core-free-icons/index";
+import Typewriter from "../pages/about/Typewriter";
 
 const SOCIALS = [
   {
@@ -31,12 +32,14 @@ const SOCIALS = [
   },
 ];
 
-const FooterLink = ({ href, children, icon: Icon }) => (
+export const FooterLink = ({ href, children, icon: Icon }) => (
   <Link
     href={href}
     target="_blank"
     rel="noreferrer noopener"
     className="footer__link"
+    aria-label={href}
+    title={href}
   >
     {Icon && <HugeiconsIcon icon={Icon} size={24} strokeWidth={1.5} />}
     {children}
@@ -56,17 +59,17 @@ const Footer = () => {
             Built with{" "}
             <FooterLink href="https://nextjs.org">Next.js</FooterLink>,
             <FooterLink href="https://sanity.io"> Sanity.io</FooterLink>,
-            <FooterLink href="https://sass-lang.com"> SCSS</FooterLink> and
+            <FooterLink href="https://sass-lang.com"> SCSS</FooterLink>,{" "}
+            <FooterLink href="https://motion.dev/"> Motion</FooterLink> and
             deployed with{" "}
             <FooterLink href="https://vercel.com">Vercel</FooterLink>.
           </p>
           <div className="footer__section-top--text-source">
             <FooterLink
-              className="footer__section-top--text-source"
+              className="footer__link capitalize"
               href="https://github.com/MarSkor/portfolio-v2"
-              icon={GithubIcon}
             >
-              Source code
+              Portfolio Source Code
             </FooterLink>
           </div>
         </section>
@@ -76,11 +79,14 @@ const Footer = () => {
               <FooterLink
                 key={social.text}
                 href={social.href}
-                icon={social.icon}
-              />
+                className="footer__section-bottom--socials-link"
+              >
+                {social.text}
+              </FooterLink>
             ))}
           </div>
         </section>
+        <Typewriter text={["Building for the web.", "Designing with logic."]} />
       </section>
     </footer>
   );
