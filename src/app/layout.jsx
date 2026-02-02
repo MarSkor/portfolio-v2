@@ -1,0 +1,36 @@
+import "./globals.scss";
+
+export const metadata = {
+  metadataBase: new URL("https://martineskorbakk.com"),
+  title: {
+    template: `%s | Martine's Portfolio`,
+    default: `Martine's Portfolio`,
+  },
+  description:
+    "Frontend Developer and UI Designer specializing in building responsive, beautiful, and accessible web experiences.",
+  openGraph: {
+    title: "Martine | Frontend Developer & UI Designer",
+    description:
+      "Frontend Developer and UI Designer specializing in building responsive, beautiful, and accessible web experiences.",
+    url: "https://martineskorbakk.com",
+    siteName: "Martine Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Martine",
+    creator: "@martinedev_",
+  },
+};
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>{children}</body>
+    </html>
+  );
+}
