@@ -144,8 +144,11 @@ export const project = defineType({
           type: "block",
           styles: [
             { title: "Normal", value: "normal" },
+            { title: "Center", value: "center" },
             { title: "H2", value: "h2" },
+            { title: "H2 (Centered)", value: "h2Center" },
             { title: "H3", value: "h3" },
+            { title: "H3 (Centered)", value: "h3Center" },
             { title: "Quote", value: "blockquote" },
           ],
           lists: [
@@ -178,6 +181,19 @@ export const project = defineType({
           type: "image",
           options: { hotspot: true },
           fields: [
+            {
+              name: "size",
+              type: "string",
+              title: "Image Size",
+              options: {
+                list: [
+                  { title: "Small (Centered)", value: "small" },
+                  { title: "Standard/Full", value: "full" },
+                ],
+                layout: "radio",
+              },
+              initialValue: "full",
+            },
             {
               name: "alt",
               type: "string",
