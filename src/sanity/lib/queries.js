@@ -11,9 +11,6 @@ export const ALL_PROJECTS = defineQuery(`
     _createdAt, 
     title, 
     techStack, 
-    livePreviewLink, 
-    githubLink, 
-    description, 
     coverImage, 
     slug
   }

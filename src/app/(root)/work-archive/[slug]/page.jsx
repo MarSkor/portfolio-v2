@@ -6,6 +6,7 @@ import NextLink from "@/components/ui/NextLink";
 import { ArrowLeft04Icon } from "@hugeicons/core-free-icons/index";
 import Appearance from "@/components/animations/Appearance";
 import { sanityFetch } from "@/sanity/lib/live";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -52,21 +53,19 @@ export async function generateMetadata({ params }) {
 const ProjectPage = async ({ params }) => {
   const { slug } = await params;
 
-  const project = await sanityFetch({
+  const response = await sanityFetch({
     query: PROJECT_DATA_BY_SLUG,
     params: { slug },
     tags: [`project:${slug}`, "project"],
   });
 
-  const { body, ...details } = project;
+  const project = response?.data;
 
   if (!project) {
-    return (
-      <section className="container container-xl">
-        <h1>Project Not Found</h1>
-      </section>
-    );
+    notFound();
   }
+
+  const { body, ...details } = project;
 
   return (
     <section>

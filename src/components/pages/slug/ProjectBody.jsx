@@ -8,12 +8,18 @@ import { urlFor } from "@/sanity/lib/image";
 
 const ImageComponent = ({ value }) => {
   // getting dimensions from sanity
+  if (!value || !value.asset) {
+    return null;
+  }
   const imageAsset = value.asset?._ref || "";
   const dimensions = imageAsset.split("-")[2]?.split("x");
   const width = dimensions ? parseInt(dimensions[0]) : 16;
   const height = dimensions ? parseInt(dimensions[1]) : 9;
   const aspectRatio = width / height;
   const size = value.size || "full";
+
+  const imgUrl = urlFor(value).auto("format").url();
+  if (!imgUrl) return null;
 
   return (
     <section className={`slug__render-image-wrapper ${size}-size`}>
@@ -23,7 +29,7 @@ const ImageComponent = ({ value }) => {
           style={{ aspectRatio: aspectRatio }}
         >
           <Image
-            src={urlFor(value).auto("format").url()}
+            src={imgUrl}
             alt={value.alt || "Project detail"}
             fill
             sizes={
@@ -46,6 +52,7 @@ const ImageComponent = ({ value }) => {
 };
 
 const CodeComponent = ({ value }) => {
+  if (!value || !value.code) return null;
   const { language, code, filename } = value;
   const [highlightedCode, setHighlightedCode] = useState("");
 
@@ -105,11 +112,12 @@ const components = {
   },
   marks: {
     link: ({ children, value }) => {
-      const rel = !value.href.startsWith("/")
-        ? "noreferrer noopener"
-        : undefined;
+      const href = value?.href || "#";
+      const rel = !href.startsWith("/") ? "noreferrer noopener" : undefined;
+      const target = !href.startsWith("/") ? "_blank" : undefined;
+
       return (
-        <a href={value.href} rel={rel} className="slug__render-link">
+        <a href={href} rel={rel} target={target} className="slug__render-link">
           {children}
         </a>
       );
@@ -130,6 +138,8 @@ const components = {
 };
 
 const ProjectBody = ({ content }) => {
+  if (!content) return null;
+
   return (
     <article className="slug__body-content container container-xl">
       <PortableText value={content} components={components} />
