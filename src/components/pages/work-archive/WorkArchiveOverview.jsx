@@ -34,9 +34,9 @@ const WorkArchiveOverview = ({ categories, projects, activeCategory }) => {
         <span className="archive__filter-label" aria-hidden="true">
           Filter_by <span className="slash">/</span>
         </span>
-        <ul role="list" className="archive__filter-list">
+        <ul className="archive__filter-list">
           {allCategories.map((category, i) => (
-            <li role="list" key={category.slug}>
+            <li key={category.slug}>
               <button
                 className={`archive__filter-btn ${activeCategory === category.slug ? "archive__filter-btn--active" : ""}`}
                 onClick={() => handleCategory(category.slug)}
@@ -48,9 +48,9 @@ const WorkArchiveOverview = ({ categories, projects, activeCategory }) => {
         </ul>
       </div>
       <div className="archive__projects-wrapper">
-        <ul role="list" className="projects__list">
+        <ul className="projects__list">
           {projects.map((project, i) => (
-            <Card key={project?._id} project={project} />
+            <Card key={project?._id} project={project} index={i} />
           ))}
         </ul>
       </div>

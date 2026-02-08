@@ -18,38 +18,38 @@ const ProjectDetails = ({ details }) => {
   } = details;
 
   const projectImageUrl = coverImage
-    ? urlFor(coverImage).auto("format").url()
+    ? urlFor(coverImage).width(1200).auto("format").url()
     : null;
 
   return (
     <section className="slug__content-wrapper">
       <section className="slug__image-wrapper">
         <figure className="slug__image-figure">
-          {projectImageUrl && (
-            <Image
-              src={projectImageUrl}
-              alt={`Cover image for ${title}`}
-              fill
-              priority
-              className="slug__image"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            />
-          )}
+          <Image
+            src={projectImageUrl}
+            alt={`Cover image for ${title}`}
+            fill
+            priority
+            fetchPriority="high"
+            loading="eager"
+            className="slug__image"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+          />
         </figure>
       </section>
       <section className="slug__details-wrapper">
         <section className="slug__details-summary">
-          <h3 className="slug__details-summary--label">{excerpt}</h3>
+          <h2 className="slug__details-summary--label">{excerpt}</h2>
         </section>
         <section className="slug__details-meta">
           <section className="slug__details-meta-grid">
             <section className="slug__details-meta-item">
-              <h5 className="meta-label">Category</h5>
+              <h3 className="meta-label">Category</h3>
               <p className="meta-value capitalize">{categoryName}</p>
             </section>
             {role && (
               <section className="slug__details-meta-item">
-                <h5 className="meta-label">Role</h5>
+                <h3 className="meta-label">Role</h3>
                 <p className="meta-value capitalize">
                   {role}{" "}
                   {collaboration && (
@@ -60,7 +60,7 @@ const ProjectDetails = ({ details }) => {
             )}
             {liveUrl && (
               <section className="slug__details-meta-item">
-                <h5 className="meta-label">Live</h5>
+                <h3 className="meta-label">Live</h3>
                 <NextLink
                   href={liveUrl.url}
                   icon={ArrowUpRight02Icon}
@@ -74,7 +74,7 @@ const ProjectDetails = ({ details }) => {
             )}
             {githubUrl && (
               <section className="slug__details-meta-item">
-                <h5 className="meta-label">Source</h5>
+                <h3 className="meta-label">Source</h3>
                 <NextLink
                   href={githubUrl}
                   icon={ArrowUpRight02Icon}
@@ -89,8 +89,8 @@ const ProjectDetails = ({ details }) => {
           </section>
           {techStack && techStack.length > 0 && (
             <section className="slug__details-tech-stack slug__details-meta-item">
-              <h5 className="meta-label">Tech Stack</h5>
-              <ul role="list" className="tech-stack-list">
+              <h3 className="meta-label">Tech Stack</h3>
+              <ul className="tech-stack-list">
                 {techStack.map((tech, index) => (
                   <Tag
                     className="tech-stack-item"

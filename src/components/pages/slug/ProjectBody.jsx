@@ -7,19 +7,30 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
 const ImageComponent = ({ value }) => {
-  const isFullWidth = value.display !== "inline";
+  // getting dimensions from sanity
+  const imageAsset = value.asset?._ref || "";
+  const dimensions = imageAsset.split("-")[2]?.split("x");
+  const width = dimensions ? parseInt(dimensions[0]) : 16;
+  const height = dimensions ? parseInt(dimensions[1]) : 9;
+  const aspectRatio = width / height;
+  const size = value.size || "full";
 
   return (
-    <section className="slug__render-image-wrapper">
-      <figure
-        className={`slug__render-figure ${isFullWidth ? "full-width" : "small-width"}`}
-      >
-        <div className="slug__render-image-container">
+    <section className={`slug__render-image-wrapper ${size}-size`}>
+      <figure className="slug__render-figure">
+        <div
+          className="slug__render-image-container"
+          style={{ aspectRatio: aspectRatio }}
+        >
           <Image
             src={urlFor(value).auto("format").url()}
             alt={value.alt || "Project detail"}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            sizes={
+              size === "small"
+                ? "(max-width: 768px) 100vw, 600px"
+                : "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            }
             loading="lazy"
             className="slug__render-image"
           />
@@ -75,12 +86,21 @@ const components = {
   },
   block: {
     h2: ({ children }) => <h2 className="slug__render-h2">{children}</h2>,
+    h2Center: ({ children }) => (
+      <h2 className="slug__render-h2 text-center">{children}</h2>
+    ),
     h3: ({ children }) => <h3 className="slug__render-h3">{children}</h3>,
+    h3Center: ({ children }) => (
+      <h3 className="slug__render-h3 text-center">{children}</h3>
+    ),
     blockquote: ({ children }) => (
       <blockquote className="slug__render-blockquote">{children}</blockquote>
     ),
     normal: ({ children }) => (
       <p className="slug__render-paragraph">{children}</p>
+    ),
+    center: ({ children }) => (
+      <p className="slug__render-paragraph text-center">{children}</p>
     ),
   },
   marks: {
