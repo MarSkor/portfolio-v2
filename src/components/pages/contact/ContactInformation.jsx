@@ -5,6 +5,8 @@ import NextLink from "@/components/ui/NextLink";
 import { ArrowUpRight02Icon } from "@hugeicons/core-free-icons/index";
 import { motion } from "motion/react";
 
+const email = process.env.NEXT_PUBLIC_EMAIL_ADDRESS;
+
 const ContactInformation = () => {
   return (
     <section className="content-col contact__info contact-card">
@@ -55,7 +57,7 @@ const ContactInformation = () => {
       <section className="contact__details contact__info--footer">
         <div className="contact__item contact__item-send-email">
           <NextLink
-            href="mailto:hello@martineskorbakk.com?subject=Project Inquiry - [Your Name]"
+            href={`mailto:${email}?subject=Project Inquiry - [Your Name]`}
             icon={ArrowUpRight02Icon}
             iconPosition="right"
             iconSize={22}
