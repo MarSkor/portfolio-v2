@@ -1,14 +1,22 @@
 "use client";
 import { motion } from "motion/react";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const Template = ({ children }) => {
+  const pathname = usePathname();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
 
   return (
     <motion.div
+      key={pathname}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
