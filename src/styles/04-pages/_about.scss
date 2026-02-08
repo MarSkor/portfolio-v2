@@ -8,11 +8,10 @@ layout / shared
 .section-divider {
   height: 6rem;
   @include min-width(medium) {
-    height: 12rem;
+    height: 8rem;
   }
 }
 
-.toolbox__grid,
 .process__steps-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -22,7 +21,6 @@ layout / shared
   }
 }
 
-.toolbox,
 .process {
   @include min-width(medium) {
     gap: 2rem;
@@ -170,62 +168,54 @@ expertise/toolbox
 ==========================================
 */
 
-.toolbox {
-  @include use-flex(column, flex-start);
+.toolbox__row {
+  @include use-flex(column);
+  gap: 2rem;
+  margin-top: 3rem;
+}
 
-  &__grid {
-    border-top: none;
+.category {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--clr-border-subtle);
+
     @include min-width(medium) {
-      border-top: 1px solid var(--clr-border-primary);
-    }
-
-    & > * {
-      border-bottom: 1px solid var(--clr-border-primary);
-
-      @include min-width(medium) {
-        border-bottom: none;
-        border-right: 1px solid var(--clr-border-primary);
-        mask-image: linear-gradient(
-          to bottom,
-          transparent,
-          black 15%,
-          black 85%,
-          transparent
-        );
-
-        &:last-child {
-          border-right: none;
-        }
-      }
+      grid-template-columns: 180px 1fr;
+      align-items: baseline;
+      gap: 2rem;
     }
   }
 
-  .category {
-    &__wrapper {
-      height: 100%;
-      padding: 2rem 1rem;
-      @include min-width(medium) {
-        padding: 4rem 2rem;
-      }
-    }
-
-    &__name {
-      font-family: var(--ff-mono);
-      color: var(--clr-primary-global);
-      font-size: var(--type-sm);
-      text-transform: uppercase;
-    }
-
-    &__list {
-      margin-top: 2rem;
-
-      li {
-        font-weight: 400;
-        font-size: var(--type-md);
-        margin-bottom: 0.8rem;
-      }
-    }
+  &__name {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-family: var(--ff-mono);
+    color: var(--clr-primary-global);
+    font-size: var(--type-sm);
+    text-transform: uppercase;
   }
+}
+
+.category__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category__item {
+  font-size: var(--type-base);
+  padding: 0.5rem 1rem;
+  background: var(--surface-subtle);
+  border: 1px solid var(--clr-border-subtle);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 /*

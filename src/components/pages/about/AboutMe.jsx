@@ -56,10 +56,21 @@ const AboutMe = () => {
           <article className="details-col">
             <h3 className="col-heading">Currently working on</h3>
             <p className="content-large-paragraph">
-              Improving my skills and understand of how to build
-              high-performance web apps with Next.js. I'm also exploring
-              database management to build powerful full-stack applications that
-              feel effortless.{" "}
+              Improving my skills and understanding of JavaScript and React. I'm
+              also having fun learning more about{" "}
+              <Link
+                className="content-link"
+                href={"https://motion.dev/"}
+                target="_blank"
+              >
+                Motion
+              </Link>
+              .
+            </p>
+            <p className="content-large-paragraph">
+              {" "}
+              I'm also learning how to build high-performance web apps with
+              Next.js and dipping into database management.{" "}
               <Link
                 className="content-link"
                 href="https://www.martineskorbakk.com/work-archive/holidaze"
@@ -69,6 +80,7 @@ const AboutMe = () => {
               </Link>{" "}
               is my recent project exploring that.
             </p>
+
             <p className="content-large-paragraph">
               On the design front, I'm continuously exploring user journeys on a
               website and accessibility{" "}

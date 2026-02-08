@@ -6,7 +6,7 @@ const ToolCategory = ({ name, tools }) => (
     <span className="category__name">{name}</span>
     <ul role="list" className="category__list">
       {tools.map((tool, idx) => (
-        <li key={idx}>
+        <li key={idx} className="category__item">
           <span className="dot"></span>
           {tool}
         </li>
@@ -24,7 +24,7 @@ const ToolBox = () => {
           <h2 className="display-text">My Toolbox</h2>
         </header>
       </Appearance>
-      <section className="toolbox__grid">
+      <section className="toolbox__row">
         <Appearance delay={0.2}>
           <ToolCategory name="Design" tools={stack.design} />
         </Appearance>
