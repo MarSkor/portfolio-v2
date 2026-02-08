@@ -1,17 +1,28 @@
 import WorkArchiveOverview from "@/components/pages/work-archive/WorkArchiveOverview";
 import PageHeading from "@/components/ui/PageHeading";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_PROJECTS, CATEGORIES_DATA } from "@/sanity/lib/queries";
 
-export const revalidate = 60;
+export const metadata = {
+  title: "Work Archive",
+  description: "A showcase of my work and projects.",
+};
 
 const WorkArchivePage = async ({ searchParams }) => {
   const params = await searchParams;
   const category = params.category ?? "all";
 
   const [categories, projects] = await Promise.all([
-    client.fetch(CATEGORIES_DATA),
-    client.fetch(ALL_PROJECTS, { category }),
+    sanityFetch({
+      query: CATEGORIES_DATA,
+      params: {},
+      tags: ["category"],
+    }),
+    sanityFetch({
+      query: ALL_PROJECTS,
+      params: { category },
+      tags: ["project"],
+    }),
   ]);
 
   return (
@@ -20,8 +31,8 @@ const WorkArchivePage = async ({ searchParams }) => {
         <PageHeading text={"Work Archive"} size="h1" />
       </header>
       <WorkArchiveOverview
-        categories={categories}
-        projects={projects}
+        categories={categories.data}
+        projects={projects.data}
         activeCategory={category}
       />
     </section>

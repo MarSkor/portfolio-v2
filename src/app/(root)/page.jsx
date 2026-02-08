@@ -1,8 +1,8 @@
 import Featured from "@/components/pages/home/Featured";
 import Hero from "@/components/pages/home/Hero";
 import { FEATURED_PROJECTS } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/client";
 import AboutMe from "@/components/pages/home/AboutMe";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const metadata = {
   title: "Home",
@@ -10,12 +10,17 @@ export const metadata = {
 };
 
 const HomePage = async () => {
-  const projects = await client.fetch(FEATURED_PROJECTS);
+  const projects = await sanityFetch({
+    query: FEATURED_PROJECTS,
+    params: {},
+    tags: ["project"],
+  });
+
   return (
     <>
       <Hero />
       <div className="section-divider" />
-      <Featured projects={projects} />
+      <Featured projects={projects.data} />
       <div className="section-divider" />
       <AboutMe />
     </>
