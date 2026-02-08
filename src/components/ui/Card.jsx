@@ -5,26 +5,28 @@ import Tag from "./Tag";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons/index";
 
-const Card = ({ project }) => {
+const Card = ({ project, index }) => {
   const { slug, title, coverImage, techStack } = project;
 
   const projectImageUrl = coverImage
-    ? urlFor(coverImage).auto("format").url()
+    ? urlFor(coverImage).width(1000).auto("format").url()
     : null;
 
   return (
-    <li role="list" className="card" tabIndex={0}>
+    <li className="card">
       <article className="card__inner">
         <header className="card__header">
-          <h3 className="card__header--title">{title}</h3>
+          <h2 className="card__header--title">{title}</h2>
         </header>
 
         <div className="card__meta-row">
-          <div className="card__content--tag-list">
-            {techStack.slice(0, 4).map((tag, i) => (
-              <Tag key={tag} text={tag} />
-            ))}
-          </div>
+          {techStack && techStack.length > 0 && (
+            <ul className="card__content--tag-list">
+              {techStack.slice(0, 5).map((tag, i) => (
+                <Tag key={tag} text={tag} />
+              ))}
+            </ul>
+          )}
           <footer className="card__footer">
             <Link
               href={`/work-archive/${slug.current}`}
@@ -48,9 +50,9 @@ const Card = ({ project }) => {
               src={projectImageUrl}
               alt={`Cover image for ${title}`}
               fill
-              priority
+              priority={index < 2}
               className="card__image"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           )}
         </figure>
