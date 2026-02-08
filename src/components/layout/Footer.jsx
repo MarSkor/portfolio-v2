@@ -1,32 +1,20 @@
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
-import {
-  GithubIcon,
-  DribbbleIcon,
-  NewTwitterRectangleIcon,
-  Behance02Icon,
-  Linkedin01Icon,
-} from "@hugeicons/core-free-icons/index";
-import Typewriter from "../pages/about/Typewriter";
 
 const SOCIALS = [
   {
-    icon: DribbbleIcon,
     text: "Dribbble",
     href: "https://dribbble.com/maskor_",
   },
   {
-    icon: Behance02Icon,
     text: "Behance",
     href: "https://www.behance.net/maskor_",
   },
   {
-    icon: NewTwitterRectangleIcon,
     text: "X",
     href: "https://x.com/martinedev_",
   },
   {
-    icon: Linkedin01Icon,
     text: "Linkedin",
     href: "https://www.linkedin.com/in/martineskor/",
   },
@@ -86,7 +74,6 @@ const Footer = () => {
             ))}
           </div>
         </section>
-        <Typewriter text={["Building for the web.", "Designing with logic."]} />
       </section>
     </footer>
   );
