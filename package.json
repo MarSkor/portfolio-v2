@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@hookform/resolvers": "^5.2.2",
     "@hugeicons/core-free-icons": "^3.1.1",
     "@hugeicons/react": "^1.1.4",
@@ -17,6 +18,7 @@
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^5.7.0",
+    "@sanity/webhook": "^4.0.4",
     "@uidotdev/usehooks": "^2.4.1",
     "@wooorm/starry-night": "^3.9.0",
     "hast-util-to-html": "^9.0.5",
@@ -28,7 +30,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.1",
     "sanity": "^5.7.0",
-    "styled-components": "^6.3.8",
+    "styled-components": "^6.3.9",
     "zod": "^4.3.6"
   },
   "devDependencies": {
