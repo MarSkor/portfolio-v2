@@ -49,32 +49,13 @@ layout
 .contact__grid {
   margin-top: 0.75rem;
   flex-wrap: wrap;
-  @include min-width(medium) {
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(12, 1fr);
 
-  .contact-card {
-    background: var(--card-bg);
-    border: 1px solid var(--clr-border-primary);
-    padding: 2rem;
-    border-radius: var(--border-radius-md);
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0.03;
-      pointer-events: none;
-      background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-      filter: contrast(150%) brightness(100%);
-    }
+  @include min-width(medium) {
+    gap: 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -94,6 +75,8 @@ contact information
   &--header {
     h2 {
       margin: 8px 0;
+      color: var(--clr-primary-global);
+      font-weight: 700;
     }
     margin-bottom: 32px;
   }
@@ -138,13 +121,19 @@ contact information
     filter: blur(1px);
   }
 
+  .availability-text {
+    color: var(--clr-primary-global);
+  }
+  .contact__social-links-label {
+    color: var(--clr-text-muted-light);
+  }
+
   .availability-text,
   .contact__social-links-label {
     font-weight: 400;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--clr-text-muted-light);
   }
 
   .contact__item {
@@ -210,9 +199,21 @@ form
       font-weight: 400;
       font-size: var(--type-sm);
     }
-    &.has-error input {
+    &.has-error input,
+    &.has-error textarea {
       border-color: var(--clr-form-error);
     }
+  }
+
+  .form__error-message {
+    margin-top: 1rem;
+    color: var(--clr-form-error);
+    font-size: 0.875rem;
+    text-align: center;
+    background: rgba(255, 77, 77, 0.1);
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--clr-form-error);
   }
 }
 /*

@@ -1,44 +1,44 @@
 "use client";
+import { useEffect, useState } from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { useForm } from "react-hook-form";
+import { useForm as useFormspree } from "@formspree/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowRight01Icon,
   CheckmarkCircleIcon,
 } from "@hugeicons/core-free-icons/index";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
+import { contactSchema } from "@/lib/contactSchema";
 
 const ContactForm = () => {
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [serverState, sendToFormspree] = useFormspree(
+    process.env.NEXT_PUBLIC_FORM_ID,
+  );
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors },
     reset,
   } = useForm({
     resolver: zodResolver(contactSchema),
-    mode: "onBlur",
+    mode: "onSubmit",
   });
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", data);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    alert("Message sent successfully!");
+    await sendToFormspree(data);
   };
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      const timer = setTimeout(() => reset(), 5000);
+    if (serverState.succeeded) {
+      reset();
+      setShowSuccess(true);
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [serverState.succeeded, reset]);
 
   return (
     <section className="content-col contact__form-container contact-card contact__form">
@@ -97,7 +97,7 @@ const ContactForm = () => {
           <textarea
             type="text"
             id="message"
-            rows={5}
+            rows={4}
             placeholder="What's on your mind?"
             {...register("message")}
             required
@@ -110,25 +110,34 @@ const ContactForm = () => {
         </fieldset>
         <button
           type="submit"
-          className={`btn-glass ${isSubmitting ? "is-loading" : ""} ${isSubmitSuccessful ? "is-success" : ""}`}
-          disabled={isSubmitting || isSubmitSuccessful}
+          className={`btn-glass ${serverState.submitting ? "is-loading" : ""} ${showSuccess ? "is-success" : ""} ${
+            serverState.errors ? "is-error" : ""
+          }`}
+          disabled={serverState.submitting || showSuccess}
         >
           <div className="btn-glass__liquid"></div>
           <div className="btn-glass__shimmer"></div>
           <div className="btn-glass__content">
             <span className="btn-glass__text">
-              {isSubmitting
+              {serverState.submitting
                 ? "Sending..."
-                : isSubmitSuccessful
+                : showSuccess
                   ? "Message Sent"
-                  : "Send Message"}
+                  : serverState.errors
+                    ? "Try Again"
+                    : "Send Message"}
             </span>
 
             <div className="btn-glass__icon">
-              {isSubmitSuccessful ? (
+              {showSuccess ? (
                 <HugeiconsIcon
                   icon={CheckmarkCircleIcon}
                   className="icon-check"
+                />
+              ) : serverState.errors ? (
+                <HugeiconsIcon
+                  icon={CheckmarkCircleIcon}
+                  className="icon-error"
                 />
               ) : (
                 <HugeiconsIcon icon={ArrowRight01Icon} className="icon-arrow" />
@@ -136,6 +145,13 @@ const ContactForm = () => {
             </div>
           </div>
         </button>
+        {serverState.errors && !serverState.submitting && (
+          <div className="form__error-message">
+            <p>
+              Ops! Something went wrong. Please check the fields and try again.
+            </p>
+          </div>
+        )}
       </form>
     </section>
   );
