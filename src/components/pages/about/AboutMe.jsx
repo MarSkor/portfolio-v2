@@ -69,8 +69,8 @@ const AboutMe = () => {
             </p>
             <p className="content-large-paragraph">
               {" "}
-              I'm also learning how to build high-performance web apps with
-              Next.js and dipping into database management.{" "}
+              In addition, I'm learning how to build high-performance web apps
+              with Next.js and dipping into database management.{" "}
               <Link
                 className="content-link"
                 href="https://www.martineskorbakk.com/work-archive/holidaze"
