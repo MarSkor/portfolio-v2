@@ -1,22 +1,32 @@
 .page-link {
-  text-decoration: none;
-  color: var(--font-clr-body-primary);
-  font-weight: 400;
-  transition: color var(--ts-ease-2);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: var(--type-sm);
 
   &:hover {
-    color: var(--nav-link-hover);
-    // color: var(--clr-accent);
-
     svg {
       transform: translateX(4px);
       transition: transform var(--ts-spring-3);
     }
   }
+}
+
+.page-link,
+.content-link {
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--font-clr-body-primary);
+  transition: color var(--ts-ease-2);
+
+  &:hover {
+    color: var(--nav-link-hover);
+  }
+}
+
+.content-link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .animate-up-right {

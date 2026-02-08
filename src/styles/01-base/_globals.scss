@@ -1,3 +1,5 @@
+@use "../05-utils/mixins" as *;
+
 html {
   color-scheme: dark light;
 }
@@ -13,7 +15,22 @@ body {
   color: var(--font-clr-heading-primary);
 
   &__slash {
-    color: var(--clr-accent);
+    color: var(--clr-text-muted);
     font-weight: 500;
+  }
+}
+
+.global-bg {
+  background-color: var(--clr-bg);
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+
+  @include min-width(medium) {
+    grid-template-columns: 1.2fr 1fr;
   }
 }

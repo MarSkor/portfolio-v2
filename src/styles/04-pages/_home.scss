@@ -1,0 +1,79 @@
+@use "../05-utils/mixins" as *;
+
+.hero {
+  &__wrapper {
+    text-align: center;
+    height: 70svh;
+    @include use-flex(column, center, center);
+    position: relative;
+    padding-bottom: 4rem;
+
+    h1 {
+      font-weight: 800;
+    }
+  }
+
+  &__paragraphs {
+    font-weight: 400;
+    margin: 16px auto 0;
+
+    & > :last-child {
+      margin-top: 6px;
+    }
+  }
+
+  &__title {
+    .hero__title-decoration {
+      color: var(--clr-primary-global);
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
+    width: 1.8px;
+
+    .scroll-line {
+      width: 1.8px;
+      background-color: var(--clr-border-primary);
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 100%,
+        transparent
+      );
+
+      &__active {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: var(--clr-primary-global);
+        box-shadow: 0 0 8px var(--clr-primary-global);
+      }
+    }
+  }
+}
+
+.about-me-home {
+  padding-bottom: 6rem;
+
+  &__header {
+    margin-bottom: 3rem;
+  }
+
+  &__main-grid {
+    margin-bottom: 6rem !important;
+  }
+
+  &__intro-section {
+    height: 100%;
+    @include use-flex(column, flex-start, center);
+  }
+}

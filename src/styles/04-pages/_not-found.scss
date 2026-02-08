@@ -1,0 +1,121 @@
+@use "../05-utils/mixins" as *;
+
+.not-found {
+  &__page {
+    background-color: var(--clr-bg);
+    min-height: 80dvh;
+    @include use-flex(column, center, center);
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  &__container {
+    max-width: 1000px;
+    width: 100%;
+    @include use-flex(column, center, center);
+  }
+
+  &__hero {
+    display: grid;
+    place-items: center;
+    width: 100%;
+
+    & > * {
+      grid-column: 1;
+      grid-row: 1;
+      position: relative;
+    }
+
+    & > *:first-child {
+      z-index: 1;
+    }
+
+    & > *:nth-child(2) {
+      z-index: 10;
+      @include use-flex(row, center, center);
+      pointer-events: none;
+      width: 100%;
+      max-width: 140px;
+      @include min-width(medium) {
+        max-width: 240px;
+      }
+    }
+
+    .bg-404 {
+      margin: 0;
+      font-size: clamp(150px, 34vw, 600px);
+      font-family: var(--ff-mono);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--clr-primary-global);
+      opacity: 0.22;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .witch-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+    }
+  }
+
+  &__text {
+    @include max-width(mx-medium) {
+      margin-top: 4rem;
+    }
+    position: relative;
+    z-index: 20;
+    text-align: center;
+
+    &--subtitle {
+      font-family: var(--ff-heading);
+      font-size: var(--type-xl);
+      color: var(--font-clr-heading-primary);
+      margin-bottom: 1rem;
+    }
+
+    &--description {
+      color: var(--font-clr-body-primary);
+      max-width: 45ch;
+      margin: 0 auto 2.5rem;
+      opacity: 0.8;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background-color: var(--clr-primary-global);
+      color: var(--clr-btn-text);
+      border-radius: var(--border-radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--ts-spring-3);
+      border: 1px solid transparent;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: var(--shadow-elevation-medium);
+        background-color: var(--font-clr-heading-primary);
+        color: var(--clr-bg);
+      }
+    }
+  }
+}
+
+@keyframes floatingWitch {
+  0% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+.witch-img {
+  animation: floatingWitch 4s ease-in-out infinite;
+}

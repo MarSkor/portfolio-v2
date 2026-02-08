@@ -18,9 +18,9 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+// html {
+//   scroll-behavior: smooth; // commenting out after adding motion.
+// }
 
 html,
 body {
@@ -198,8 +198,10 @@ section {
   display: block;
 }
 
+ul,
 ul[role="list"],
-ol[role="list"] {
+ol[role="list"],
+ol {
   list-style: none;
 }
 

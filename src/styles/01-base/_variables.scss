@@ -54,6 +54,11 @@ root variables
   );
   --clr-primary-global: var(--clr-primary-200);
   --clr-text-muted: color-mix(in srgb, var(--clr-neutral-dark-400), white 35%);
+  --clr-text-muted-dark: color-mix(
+    in srgb,
+    var(--clr-neutral-dark-400),
+    white 25%
+  );
   --clr-text-muted-light: color-mix(
     in srgb,
     var(--clr-neutral-dark-400),
@@ -94,6 +99,7 @@ root variables
   --nav-border: var(--clr-neutral-dark-400);
   --nav-link: var(--clr-neutral-light-500);
   --nav-link-hover: var(--clr-primary-200);
+  --nav-link-active: var(--clr-primary-200);
   --footer-link: var(--clr-neutral-light-400);
   --footer-link-hover: var(--clr-primary-200);
   --clr-accent: var(--clr-accent-500);
@@ -112,6 +118,7 @@ root variables
     var(--clr-neutral-light-300),
     black 70%
   );
+  --clr-border-subtle: rgba(255, 255, 255, 0.1);
   --clr-slug-details-bg: color-mix(in srgb, var(--clr-primary-500), black 15%);
   --clr-code-filename-bg: color-mix(
     in srgb,
@@ -140,6 +147,8 @@ root variables
   --clr-btn-hover: var(--clr-neutral-dark-500);
   --clr-form-error: hsl(0, 89%, 63%);
   --clr-form-success: hsl(152, 100%, 50%);
+
+  --surface-subtle: rgba(255, 255, 255, 0.05);
   /*
   ==========================================
   shadow
@@ -265,6 +274,7 @@ root variables
   );
   --nav-link: var(--clr-neutral-dark-500);
   --nav-link-hover: var(--clr-primary-400);
+  --nav-link-active: var(--clr-primary-500);
   --footer-link: var(--clr-neutral-dark-500);
   --footer-link-hover: var(--clr-primary-400);
   --clr-icon: var(--clr-neutral-dark-500);
@@ -285,6 +295,7 @@ root variables
     var(--clr-neutral-dark-300),
     white 55%
   );
+  --clr-border-subtle: rgba(0, 0, 0, 0.1);
   --card-bg: color-mix(in srgb, var(--clr-neutral-light-500), black 3.5%);
   --clr-primary-global: var(--clr-primary-500);
   --clr-bento-card-one: color-mix(
@@ -303,11 +314,26 @@ root variables
     transparent 96%
   );
   --clr-bento-card-four: var(--clr-neutral-light-50);
-
   --clr-btn-text: var(--clr-neutral-light-500);
   --clr-btn-hover: var(--clr-neutral-light-500);
   --clr-form-error: hsl(0, 70%, 37%);
   --clr-form-success: #06c16a;
+  --clr-text-muted-dark: color-mix(
+    in srgb,
+    var(--clr-neutral-dark-400),
+    white 15%
+  );
+  --clr-text-muted-link: color-mix(
+    in srgb,
+    var(--clr-neutral-dark-400),
+    white 15%
+  );
+  --clr-text-muted-light: color-mix(
+    in srgb,
+    var(--clr-neutral-light-400),
+    white 40%
+  );
+  --surface-subtle: rgba(122, 122, 122, 0.05);
   /*
   ==========================================
   shadows

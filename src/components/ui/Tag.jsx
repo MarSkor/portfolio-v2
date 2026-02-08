@@ -1,6 +1,6 @@
 const Tag = ({ text, className }) => {
   return (
-    <li role="listitem" className={`tag__wrapper ${className}`}>
+    <li className={`tag__wrapper ${className || ""}`}>
       <p className="tag__text" style={{ color: "inherit" }}>
         {text}
       </p>
