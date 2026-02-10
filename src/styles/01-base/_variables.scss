@@ -333,6 +333,11 @@ root variables
     var(--clr-neutral-light-400),
     white 40%
   );
+  --clr-text-muted-lighter: color-mix(
+    in srgb,
+    var(--clr-neutral-light-400),
+    white 60%
+  );
   --surface-subtle: rgba(122, 122, 122, 0.05);
   /*
   ==========================================
