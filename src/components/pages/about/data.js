@@ -17,9 +17,6 @@ export const stack = {
     "Responsive Websites",
     "Web Accessibility",
     "RESTful APIs",
-    "Neon",
-    "Mantine UI",
-    "Motion",
   ],
   other: ["VS Code", "Git", "GitKraken", "Vercel", "ClickUp", "Trello"],
 };
