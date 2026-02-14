@@ -3,10 +3,12 @@
 .hero {
   &__wrapper {
     text-align: center;
-    height: 70svh;
+    height: 90svh;
     @include use-flex(column, center, center);
     position: relative;
-    padding-bottom: 4rem;
+    @include min-width(medium) {
+      height: 80svh;
+    }
 
     h1 {
       font-weight: 800;
