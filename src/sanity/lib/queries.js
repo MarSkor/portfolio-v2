@@ -19,7 +19,9 @@ export const ALL_PROJECTS = defineQuery(`
     _createdAt, 
     title, 
     techStack, 
-    coverImage, 
+    coverImage{
+    ${imageFields}
+    }, 
     slug
   }
 `);

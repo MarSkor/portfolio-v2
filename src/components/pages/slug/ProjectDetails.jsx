@@ -22,16 +22,18 @@ const ProjectDetails = ({ details }) => {
     <section className="slug__content-wrapper">
       <section className="slug__image-wrapper">
         <figure className="slug__image-figure">
-          <SanityImage
-            fill
-            priority
-            quality={90}
-            className="slug__image"
-            alt={coverImage?.altText?.current || `Cover image for ${title}`}
-            src={coverImage}
-            blurDataURL={coverImage?.extData?.lqip}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-          />
+          {coverImage && (
+            <SanityImage
+              fill
+              priority
+              quality={90}
+              className="slug__image"
+              alt={coverImage?.altText?.current || `Cover image for ${title}`}
+              src={coverImage}
+              blurDataURL={coverImage?.extData?.lqip}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+            />
+          )}
         </figure>
       </section>
       <section className="slug__details-wrapper">

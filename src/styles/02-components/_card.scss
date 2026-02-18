@@ -2,6 +2,7 @@
 
 .projects-grid-container {
   --gap: 1.2rem;
+
   display: grid;
   gap: var(--gap);
   grid-template-columns: 1fr;

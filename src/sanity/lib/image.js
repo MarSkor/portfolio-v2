@@ -10,21 +10,29 @@ export const urlFor = (source) => {
 };
 
 export const urlForImage = (image, width) => {
-  const builder = urlFor(image);
+  const imageBuilder = urlFor(image);
   if (width) {
-    return builder.width(width).url();
+    return imageBuilder.width(width).url();
   }
 
-  return builder.url();
+  return imageBuilder.url();
 };
 
 export const sanityLoader = ({ src, width, quality }) => {
-  if (!src) return "";
+  if (!src) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("sanityLoader: src is missing");
+    }
+    return "";
+  }
 
   let imageSource;
   try {
     imageSource = typeof src === "string" ? JSON.parse(src) : src;
   } catch {
+    if (process.env.NODE_ENV === "development") {
+      console.warn("sanityLoader: failed to parse src", src);
+    }
     return "";
   }
 

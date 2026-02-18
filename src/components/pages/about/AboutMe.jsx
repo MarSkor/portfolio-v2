@@ -111,7 +111,6 @@ const AboutMe = () => {
                   alt="nature photography"
                   src={"/assets/about/nature-photo.jpg"}
                   sizes="(max-width: 768px) 100vw, 435px"
-                  // quality={80}
                 />
               </figure>
             </div>
