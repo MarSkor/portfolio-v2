@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor, urlForImage } from "@/sanity/lib/image";
 import { ArrowUpRight02Icon } from "@hugeicons/core-free-icons/index";
 import NextLink from "@/components/ui/NextLink";
 import Tag from "@/components/ui/Tag";
+import SanityImage from "@/components/ui/SanityImage";
 
 const ProjectDetails = ({ details }) => {
   const {
@@ -17,22 +18,18 @@ const ProjectDetails = ({ details }) => {
     collaboration,
   } = details;
 
-  const projectImageUrl = coverImage
-    ? urlFor(coverImage).width(1200).auto("format").url()
-    : null;
-
   return (
     <section className="slug__content-wrapper">
       <section className="slug__image-wrapper">
         <figure className="slug__image-figure">
-          <Image
-            src={projectImageUrl}
-            alt={`Cover image for ${title}`}
+          <SanityImage
             fill
             priority
-            fetchPriority="high"
-            loading="eager"
+            quality={90}
             className="slug__image"
+            alt={coverImage?.altText?.current || `Cover image for ${title}`}
+            src={coverImage}
+            blurDataURL={coverImage?.extData?.lqip}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
           />
         </figure>

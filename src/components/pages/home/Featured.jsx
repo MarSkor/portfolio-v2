@@ -10,7 +10,7 @@ const Featured = ({ projects }) => {
           <h2>Featured Projects</h2>
         </header>
         <section className="projects__wrapper">
-          <ul role="list" className="projects__list">
+          <ul role="list" className="projects-grid-container">
             {projects.map((project, i) => (
               <Card key={project?._id} project={project} index={i} />
             ))}

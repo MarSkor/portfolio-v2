@@ -1,17 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
 import Tag from "./Tag";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons/index";
+import SanityImage from "./SanityImage";
 
 const Card = ({ project, index }) => {
   const { slug, title, coverImage, techStack } = project;
-
-  const projectImageUrl = coverImage
-    ? urlFor(coverImage).width(1000).auto("format").url()
-    : null;
-
   return (
     <li className="card">
       <article className="card__inner">
@@ -27,6 +21,7 @@ const Card = ({ project, index }) => {
               ))}
             </ul>
           )}
+
           <footer className="card__footer">
             <Link
               href={`/work-archive/${slug.current}`}
@@ -45,13 +40,15 @@ const Card = ({ project, index }) => {
         </div>
 
         <figure className="card__image-wrapper">
-          {projectImageUrl && (
-            <Image
-              src={projectImageUrl}
-              alt={`Cover image for ${title}`}
+          {coverImage?.asset && (
+            <SanityImage
               fill
               priority={index < 2}
+              quality={75}
               className="card__image"
+              alt={coverImage?.altText?.current || `Cover image for ${title}`}
+              src={coverImage}
+              blurDataURL={coverImage?.extData?.lqip}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           )}

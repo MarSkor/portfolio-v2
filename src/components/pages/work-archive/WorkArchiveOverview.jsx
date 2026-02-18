@@ -47,13 +47,18 @@ const WorkArchiveOverview = ({ categories, projects, activeCategory }) => {
           ))}
         </ul>
       </div>
-      <div className="archive__projects-wrapper">
+      {/* <div className="archive__projects-wrapper">
         <ul className="projects__list">
           {projects.map((project, i) => (
             <Card key={project?._id} project={project} index={i} />
           ))}
         </ul>
-      </div>
+      </div> */}
+      <ul className="projects-grid-container">
+        {projects.map((project, i) => (
+          <Card key={project?._id} project={project} index={i} />
+        ))}
+      </ul>
     </section>
   );
 };
