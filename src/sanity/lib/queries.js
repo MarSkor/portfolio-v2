@@ -1,8 +1,16 @@
 import { defineQuery } from "next-sanity";
 
+const imageFields = `
+ asset,
+  altText,
+  "extData": asset->metadata {
+    lqip,
+    dimensions,
+  }`;
+
 export const FEATURED_PROJECTS =
   defineQuery(`*[_type == "project" && featured == true && defined(slug.current)]|order(_createdAt desc){
-  _id,_createdAt, title, techStack, coverImage, slug, "categoryName": category->title
+  _id,_createdAt, title, techStack, coverImage{${imageFields}}, slug, "categoryName": category->title
 }`);
 
 export const ALL_PROJECTS = defineQuery(`
@@ -11,7 +19,9 @@ export const ALL_PROJECTS = defineQuery(`
     _createdAt, 
     title, 
     techStack, 
-    coverImage, 
+    coverImage{
+    ${imageFields}
+    }, 
     slug
   }
 `);
@@ -32,7 +42,9 @@ export const PROJECT_DATA_BY_SLUG = defineQuery(`
       },
     "categoryName": category->title,
     collaboration,
-    coverImage,
+   coverImage{
+    ${imageFields}
+    },
     date,
     excerpt,
     featured,

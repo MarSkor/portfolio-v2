@@ -1,16 +1,19 @@
 @use "../05-utils/mixins" as *;
 
-.projects__list {
-  --gap: 2rem;
+.projects-grid-container {
+  --gap: 1.2rem;
+
   display: grid;
   gap: var(--gap);
-  margin: 3rem auto;
-  justify-content: center;
-  max-width: var(--breakpoint-xl);
-
   grid-template-columns: 1fr;
+  margin: 32px 0;
+
   @include min-width(medium) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include min-width(large) {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -56,14 +59,6 @@ setting
     filter: blur(1px);
   }
 
-  &:last-child:nth-child(odd) {
-    @include min-width(medium) {
-      grid-column: 1 / span 2;
-      justify-self: center;
-      width: calc(50% - (var(--gap) / 2));
-    }
-  }
-
   /*
 ==========================================
 image
@@ -73,7 +68,7 @@ image
     z-index: 1;
     position: relative;
     flex-grow: 0;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3/2;
     border-radius: var(--border-radius-sm);
     overflow: hidden;
     background-color: var(--clr-image-bg-placeholder);
@@ -109,13 +104,13 @@ inner
 
   &__header {
     z-index: 2;
+    margin-top: 12px;
 
     &--title {
-      font-size: var(--type-lg);
-      margin: 16px 0 4px;
+      font-size: var(--type-md);
       display: block;
-      line-clamp: 2;
-      -webkit-line-clamp: 2;
+      line-clamp: 1;
+      -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
       height: auto;
       min-height: 1em;

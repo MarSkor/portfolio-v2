@@ -36,6 +36,7 @@ export const project = defineType({
       type: "image",
       options: {
         hotspot: true,
+        metadata: ["lqip", "palette"],
       },
       fields: [
         defineField({
@@ -46,6 +47,8 @@ export const project = defineType({
             source: "title",
             maxLength: 96,
           },
+          validation: (Rule) =>
+            Rule.required().warning("Please provide alt text."),
         }),
       ],
     }),
